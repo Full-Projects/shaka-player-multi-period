@@ -82,5 +82,33 @@ out.mpd
 
 # HTML file:
 ```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.11/shaka-player.compiled.js"></script>
+  </head>
+  <body>
+    <video id="video" width="640" controls></video>
+    <script>
+        const shaka = window.shaka;
+        const video = document.getElementById("video");
+        const player = new shaka.Player(video);
 
+        video.addEventListener("play", () => {
+            player.configure({
+                streaming: {
+                rebufferingGoal: 10,
+                bufferingGoal: 10
+                }
+            });
+        });
+
+        player.load(
+            //"https://storage.googleapis.com/shaka-demo-assets/angel-one/dash.mpd"
+            "https://raw.githubusercontent.com/azoozs/shaka-player-multi-period/main/videos/out.mpd"
+        );
+
+    </script>
+  </body>
+</html>
 ```
