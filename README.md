@@ -118,3 +118,35 @@ but my .mpd https://raw.githubusercontent.com/azoozs/shaka-player-multi-period/m
 
 # The Question:
 Why `rebufferingGoal: 10`,`bufferingGoal: 10` don't work with multi-period `mpeg dash`
+
+
+# Solution:
+
+I’ve discovered that the issue isn’t linked to bufferingGoal. Instead, it’s due to minor gaps between periods. I believe this occurs because MP4Box sets the duration of each period based on the audio stream’s duration, not the video stream’s. You can verify the duration of the video stream using `ffprobe`:
+
+```python
+import subprocess
+import json
+import datetime
+
+command = f"ffprobe -v quiet -print_format json -show_format -show_streams input_001.mp4"
+
+# Execute the command and get the output
+process = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
+out, err = process.communicate()
+
+# Convert the output to a Python dictionary
+output_dict = json.loads(out)
+
+# Extract the video stream duration
+for stream in output_dict['streams']:
+    if stream['codec_type'] == 'video':
+        video_duration = stream['duration']
+        print(f"Video Duration: {video_duration}")
+    if stream['codec_type'] == 'audio':
+        audio_duration = stream['duration']
+        print(f"Audio Duration: {audio_duration}")
+
+```
+
+Afterwards, you’ll need to manually adjust the duration of each period. This should resolve the issue.
