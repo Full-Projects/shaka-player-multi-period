@@ -1,10 +1,10 @@
-Sure, I can help you with that. Here's how you can improve your question:
+I see, thank you for the clarification. Here's the revised version of your question:
 
 **Title:**
-"Multi-Period MPEG-DASH Not Working with Shaka Player"
+"Buffering Goal Not Working with Multi-Period MPEG-DASH in Shaka Player"
 
 **Body:**
-I'm using the Shaka Player to play a multi-period MPEG-DASH video, but I'm encountering an issue. I have an `input.mp4` file with a duration of 30 seconds, and I want to split it into segments of 10 seconds each.
+I'm using the Shaka Player to play a multi-period MPEG-DASH video, but I'm encountering an issue with the buffering goal. I have an `input.mp4` file with a duration of 30 seconds, and I want to split it into segments of 10 seconds each.
 
 Here are the steps I followed:
 
@@ -33,10 +33,10 @@ input_002_dashinit.mp4
 out.mpd
 ```
 
-I then attempted to play the `out.mpd` file using the Shaka Player in my HTML file. The player is configured with a `rebufferingGoal` and `bufferingGoal` of 10. However, the multi-period MPEG-DASH video does not seem to work with these settings.
+I then attempted to play the `out.mpd` file using the Shaka Player in my HTML file. The player is configured with a `rebufferingGoal` and `bufferingGoal` of 10. However, the buffering goal does not seem to work with the multi-period MPEG-DASH video.
 
-When I use the `https://storage.googleapis.com/shaka-demo-assets/angel-one/dash.mpd` URL, it works fine. But when I use my own `https://raw.githubusercontent.com/azoozs/shaka-player-multi-period/main/videos/out.mpd` URL, it doesn't work.
+When I use the `https://storage.googleapis.com/shaka-demo-assets/angel-one/dash.mpd` URL, it works fine. But when I use my own `https://raw.githubusercontent.com/azoozs/shaka-player-multi-period/main/videos/out.mpd` URL, the buffering goal doesn't seem to work.
 
-My question is: Why don't the `rebufferingGoal: 10` and `bufferingGoal: 10` settings work with a multi-period MPEG-DASH video?
+My question is: Why doesn't the `bufferingGoal: 10` setting work with a multi-period MPEG-DASH video?
 
 Any help would be greatly appreciated. Thank you.
