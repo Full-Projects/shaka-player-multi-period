@@ -150,3 +150,48 @@ for stream in output_dict['streams']:
 ```
 
 Afterwards, you’ll need to manually adjust the duration of each period. This should resolve the issue.
+
+
+
+# Dynamic Solution:
+
+```python
+import subprocess
+import json
+import datetime
+
+# Define the ffprobe command as a string
+def get_real_video_duration(filename):
+    command = f"ffprobe -v quiet -print_format json -show_format -show_streams {filename}"
+    # Execute the command and get the output
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
+    out, err = process.communicate()
+    # Convert the output to a Python dictionary
+    output_dict = json.loads(out)
+    # Extract the video stream duration
+    for stream in output_dict['streams']:
+        if stream['codec_type'] == 'video':
+            video_duration = stream['duration']
+            print(f"Video Duration: {video_duration}")
+        if stream['codec_type'] == 'audio':
+            audio_duration = stream['duration']
+            print(f"Audio Duration: {audio_duration}")
+    
+    return video_duration
+
+# mediaPresentationDuration="PT0H0M30.056S" maxSubsegmentDuration="PT0H0M10.386S"
+file_names = ["input_001.mp4", "input_002.mp4", "input_003.mp4"]
+
+video_durations_total = 0
+max_video_duration_list = []
+for filename in file_names:
+    video_duration = get_real_video_duration(filename)
+    mpd_duration = "PT0H0M{}S".format(video_duration)
+    print(mpd_duration)
+    video_durations_total += float(video_duration)
+    max_video_duration_list.append(float(video_duration))
+
+max_video_duration = max(max_video_duration_list)
+print("video_durations_total: " + str(video_durations_total))
+print("max_video_duration: " + str(max_video_duration))
+```
