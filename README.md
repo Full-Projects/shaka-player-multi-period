@@ -112,3 +112,9 @@ out.mpd
   </body>
 </html>
 ```
+
+"https://storage.googleapis.com/shaka-demo-assets/angel-one/dash.mpd" it is work
+but my .mpd "https://raw.githubusercontent.com/azoozs/shaka-player-multi-period/main/videos/out.mpd" (multi-period) doesn't work , why ? 
+
+# The Question:
+Why `rebufferingGoal: 10`,`bufferingGoal: 10` don't work with multi-period `mpeg dash`
