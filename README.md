@@ -1,5 +1,5 @@
 # shaka-player-multi-period
-I have `input.mp4` (duration: 30 seconds)
+I have `input.mp4` (duration: 30 seconds) , and I want to split it based on 10 seconds.
 # Step 1:
 ```python
 ffmpeg -i input.mp4 -c copy -map 0 -segment_time 10 -f segment input_%03d.mp4
