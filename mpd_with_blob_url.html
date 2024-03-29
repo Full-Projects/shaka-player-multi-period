@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Download and Play</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"
+    integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"> </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.11/shaka-player.compiled.js"></script>
+</head>
+<body>
+  <input type="text" id="urlInput" placeholder="Enter URL">
+  <button id="downloadBtn">Download & Play</button>
+  <video id="video" width="640" controls></video>
+  <script>
+    const shaka = window.shaka;
+    const video = document.getElementById("video");
+    const player = new shaka.Player(video);
+
+    video.addEventListener("play", () => {
+      player.configure({
+        streaming: {
+          rebufferingGoal: 10,
+          bufferingGoal: 10
+        }
+      });
+    });
+
+    //shaka.net.NetworkingEngine.registerScheme('blob', shaka.net.HttpFetchPlugin);
+
+    document.getElementById("downloadBtn").addEventListener("click", function () {
+      var url = document.getElementById("urlInput").value;
+
+      // Modify the extension ID as needed
+      var id = "jgefhgchodfjnjemnclijejgnlifdbbg";
+
+      chrome.runtime.sendMessage(id, { url: url }, function (response) {
+        console.log("Response from extension:", response.fileContents);
+        let mpd = response.fileContents;
+
+        console.log("Original MPD: ", mpd);
+
+        // Create Blob Object
+        const blob = new Blob([mpd], { type: "application/dash+xml" });
+        const urlblob = URL.createObjectURL(blob);
+        player.load(urlblob, null, 'application/dash+xml');
+      });
+    });
+  </script>
+</body>
+</html>
