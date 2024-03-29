@@ -8,7 +8,7 @@
  <Period id="P1" duration="PT0H0M9.342666S">
   <AdaptationSet segmentAlignment="true" maxWidth="852" maxHeight="480" maxFrameRate="90000/3754" par="16:9" startWithSAP="1">
    <Representation id="1" mimeType="video/mp4" codecs="avc1.4D4028" width="852" height="480" frameRate="90000/3754" sar="640:639" bandwidth="1095112">
-    <BaseURL>https://raw.githubusercontent.com/azoozs/shaka-player-multi-period/main/example_works_fine/input_001_dash_track1_init.mp4 </BaseURL>
+    <BaseURL>input_001_dash_track1_init.mp4 </BaseURL>
     <SegmentList timescale="90000" duration="90000">
      <Initialization range="0-942"/>
      <SegmentURL mediaRange="943-112862" indexRange="943-986"/>
@@ -27,7 +27,7 @@
   <AdaptationSet segmentAlignment="true" lang="ja" startWithSAP="1">
    <Representation id="2" mimeType="audio/mp4" codecs="mp4a.40.2" audioSamplingRate="48000" bandwidth="62648">
     <AudioChannelConfiguration schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011" value="2"/>
-    <BaseURL>https://raw.githubusercontent.com/azoozs/shaka-player-multi-period/main/example_works_fine/input_001_dash_track2_init.mp4 </BaseURL>
+    <BaseURL>input_001_dash_track2_init.mp4 </BaseURL>
     <SegmentList timescale="48000" duration="48000">
      <Initialization range="0-824"/>
      <SegmentURL mediaRange="825-4906" indexRange="825-868"/>
@@ -47,7 +47,7 @@
  <Period id="P2" duration="PT0H0M10.385366S">
   <AdaptationSet segmentAlignment="true" maxWidth="852" maxHeight="480" maxFrameRate="90000/3754" par="16:9" startWithSAP="1">
    <Representation id="3" mimeType="video/mp4" codecs="avc1.4D4028" width="852" height="480" frameRate="90000/3754" sar="640:639" bandwidth="244480">
-    <BaseURL>https://raw.githubusercontent.com/azoozs/shaka-player-multi-period/main/example_works_fine/input_002_dash_track1_init.mp4 </BaseURL>
+    <BaseURL>input_002_dash_track1_init.mp4 </BaseURL>
     <SegmentList timescale="90000" duration="90000">
      <Initialization range="0-942"/>
      <SegmentURL mediaRange="943-52996" indexRange="943-986"/>
@@ -67,7 +67,7 @@
   <AdaptationSet segmentAlignment="true" lang="ja" startWithSAP="1">
    <Representation id="4" mimeType="audio/mp4" codecs="mp4a.40.2" audioSamplingRate="48000" bandwidth="130656">
     <AudioChannelConfiguration schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011" value="2"/>
-    <BaseURL>https://raw.githubusercontent.com/azoozs/shaka-player-multi-period/main/example_works_fine/input_002_dash_track2_init.mp4 </BaseURL>
+    <BaseURL>input_002_dash_track2_init.mp4 </BaseURL>
     <SegmentList timescale="48000" duration="48000">
      <Initialization range="0-872"/>
      <SegmentURL mediaRange="873-16633" indexRange="873-916"/>
@@ -88,7 +88,7 @@
  <Period id="P3" duration="PT0H0M10.327968S">
   <AdaptationSet segmentAlignment="true" maxWidth="852" maxHeight="480" maxFrameRate="90000/3754" par="16:9" startWithSAP="1">
    <Representation id="5" mimeType="video/mp4" codecs="avc1.4D4028" width="852" height="480" frameRate="90000/3754" sar="640:639" bandwidth="729232">
-    <BaseURL>https://raw.githubusercontent.com/azoozs/shaka-player-multi-period/main/example_works_fine/input_003_dash_track1_init.mp4 </BaseURL>
+    <BaseURL>input_003_dash_track1_init.mp4 </BaseURL>
     <SegmentList timescale="90000" duration="90000">
      <Initialization range="0-942"/>
      <SegmentURL mediaRange="943-118750" indexRange="943-986"/>
@@ -107,7 +107,7 @@
   <AdaptationSet segmentAlignment="true" lang="ja" startWithSAP="1">
    <Representation id="6" mimeType="audio/mp4" codecs="mp4a.40.2" audioSamplingRate="48000" bandwidth="128344">
     <AudioChannelConfiguration schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011" value="2"/>
-    <BaseURL>https://raw.githubusercontent.com/azoozs/shaka-player-multi-period/main/example_works_fine/input_003_dash_track2_init.mp4 </BaseURL>
+    <BaseURL>input_003_dash_track2_init.mp4 </BaseURL>
     <SegmentList timescale="48000" duration="48000">
      <Initialization range="0-872"/>
      <SegmentURL mediaRange="873-17001" indexRange="873-916"/>
