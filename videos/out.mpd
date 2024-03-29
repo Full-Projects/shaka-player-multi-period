@@ -11,7 +11,7 @@
    <ContentComponent id="2" contentType="audio"/>
    <Representation id="1" mimeType="video/mp4" codecs="avc1.4D4028,mp4a.40.2" width="852" height="480" frameRate="24000/1001" sar="640:639" bandwidth="989991">
     <AudioChannelConfiguration schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011" value="2"/>
-    <BaseURL>input_000_dashinit.mp4</BaseURL>
+    <BaseURL>https://raw.githubusercontent.com/azoozs/shaka-player-multi-period/main/videos/input_000_dashinit.mp4 </BaseURL>
     <SegmentList timescale="24000" duration="240000">
      <Initialization range="0-1401"/>
      <SegmentURL mediaRange="1402-1379514" indexRange="1402-1445"/>
@@ -25,7 +25,7 @@
    <ContentComponent id="2" contentType="audio"/>
    <Representation id="2" mimeType="video/mp4" codecs="avc1.4D4028,mp4a.40.2" width="852" height="480" frameRate="24000/1001" sar="640:639" bandwidth="122979">
     <AudioChannelConfiguration schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011" value="2"/>
-    <BaseURL>input_001_dashinit.mp4</BaseURL>
+    <BaseURL>https://raw.githubusercontent.com/azoozs/shaka-player-multi-period/main/videos/input_001_dashinit.mp4 </BaseURL>
     <SegmentList timescale="24000" duration="240000">
      <Initialization range="0-1449"/>
      <SegmentURL mediaRange="1450-476320" indexRange="1450-1493"/>
@@ -40,7 +40,7 @@
    <ContentComponent id="2" contentType="audio"/>
    <Representation id="3" mimeType="video/mp4" codecs="avc1.4D4028,mp4a.40.2" width="852" height="480" frameRate="24000/1001" sar="640:639" bandwidth="228267">
     <AudioChannelConfiguration schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011" value="2"/>
-    <BaseURL>input_002_dashinit.mp4</BaseURL>
+    <BaseURL>https://raw.githubusercontent.com/azoozs/shaka-player-multi-period/main/videos/input_002_dashinit.mp4 </BaseURL>
     <SegmentList timescale="24000" duration="240000">
      <Initialization range="0-1449"/>
      <SegmentURL mediaRange="1450-1014178" indexRange="1450-1493"/>
