@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Download File</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.11/shaka-player.compiled.js"></script>
+</head>
+
+<body>
+  <input type="text" id="urlInput" placeholder="Enter URL">
+  <button id="downloadBtn">Download</button>
+  <video id="video" width="640" controls></video>
+  <script>
+	// load from undirect URL (Blob URL)
+    function loadContent(mpdText) {
+      // Create a Blob from the text content
+      const blob = new Blob([mpdText], { type: "application/dash+xml" });
+      const blobUrl = URL.createObjectURL(blob);
+
+      const shaka = window.shaka;
+      const video = document.getElementById("video");
+      const player = new shaka.Player(video);
+
+      video.addEventListener("play", () => {
+        player.configure({
+          streaming: {
+            rebufferingGoal: 10,
+            bufferingGoal: 10
+          }
+        });
+      });
+      // Load the content into the player using the Blob URL
+      player.load(blobUrl).then(() => {
+        console.log("Shaka Player: loadContent(): Content loaded successfully");
+      }).catch((error) => {
+        console.error("Shaka Player: loadContent(): Error loading content:", error);
+      });
+    }
+
+
+    // load from direct url
+    function load_shaka_player(url) {
+      const shaka = window.shaka;
+      const video = document.getElementById("video");
+      const player = new shaka.Player(video);
+
+      video.addEventListener("play", () => {
+        player.configure({
+          streaming: {
+            rebufferingGoal: 10,
+            bufferingGoal: 10
+          }
+        });
+      });
+
+      player.load(
+        //"https://storage.googleapis.com/shaka-demo-assets/angel-one/dash.mpd"
+        url
+      );
+    }
+
+    console.log("you should add your domain to the 'externally_connectable' in mainfest.json in extension to allow to your website to communicate with extension");
+    document.getElementById("downloadBtn").addEventListener("click", function () {
+      var url = document.getElementById("urlInput").value;
+      var id = "jgefhgchodfjnjemnclijejgnlifdbbg"; // Replace with your extension ID
+      chrome.runtime.sendMessage(id, { url: url }, function (response) {
+        console.log("Response from extension:", response.fileContents);
+        // Display the file contents or handle the file here
+        //var url = "https://raw.githubusercontent.com/azoozs/shaka-player-multi-period/main/videos/out.mpd";
+        loadContent(response.fileContents);
+
+
+        // End Display the file contents or handle the file here
+      });
+    });
+  </script>
+</body>
+
+</html>
