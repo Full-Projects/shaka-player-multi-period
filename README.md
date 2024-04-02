@@ -1,4 +1,12 @@
 # shaka-player-multi-period
+
+## The final solutions I came up with:
+
+1. send url to `Chrome Extension` and `Chrome Extension` will return the `.mpd text` and I will create `Blob URL` for this `.mpd text` and pass the `Blob URL` to `player.load` (shaka player), maybe I can make `Chrome Extension` return ready `Blob URL` instead of `.mpd text`: [here the last code on this feature](https://github.com/azoozs/shaka-player-multi-period/blob/main/load_mpd_from_blob/temp_load_blob_from_chrome_extension.html):
+
+2.  Maybe rent web hosting and then have it work as a proxy. 
+
+____
 I have `input.mp4` (duration: 30 seconds) , and I want to split it based on 10 seconds.
 # Step 1:
 ```python
