@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https: http:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *"> -->
+
+  <title>Download and Play</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous" referrerpolicy="no-referrer"> </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.11/shaka-player.compiled.js"></script>
+</head>
+<body>
+  <input type="text" id="urlInput" placeholder="Enter URL">
+  <button id="downloadBtn">Download & Play</button>
+  <video id="video" width="640" controls></video>
+  <script>
+    const shaka = window.shaka;
+    const video = document.getElementById("video");
+    const player = new shaka.Player(video);
+    video.addEventListener("play", () => {
+      player.configure({
+        streaming: {
+          rebufferingGoal: 10,
+          bufferingGoal: 10
+        }
+      });
+    });
+    document.getElementById("downloadBtn").addEventListener("click", function () {
+      var urlInput = document.getElementById("urlInput");
+      var url = urlInput.value;
+
+	  fetch(url)
+	  .then(response => response.blob()) // Get the response as a Blob
+	  .then(blob => {
+		// Create a Blob URL from the Blob
+		var blobURL = URL.createObjectURL(blob);
+		// Load the Blob URL into the Shaka Player
+		player.load(blobURL, null, 'application/dash+xml');
+	  })
+	  .catch(error => {
+		console.error("Error fetching data from the server:", error);
+	  });
+	 });
+	</script>
+</body>
+</html>
